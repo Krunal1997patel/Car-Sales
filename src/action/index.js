@@ -11,7 +11,7 @@ export const addIteam = (item) => {
 export const REMOVE_ITEM = 'REMOVE_ITEM'
 
 export const removeIteam = (item) => {
-    console.log('remove iteam was clicked', item)
+    // console.log('remove iteam was clicked', item)
     return{
         type: REMOVE_ITEM,
         payload: item

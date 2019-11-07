@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 
 import { addIteam,  removeIteam } from './action'
 
-const App = ({ state, addIteam,  removeIteam }) => {
+const App = ({ car, additionalPrice, additionalFeatures, addIteam,  removeIteam }) => {
  
   const removeFeature = item => {
     // dispatch an action here to remove an item
@@ -24,12 +24,12 @@ const App = ({ state, addIteam,  removeIteam }) => {
   return (
     <div className="boxes">
       <div className="box">
-        <Header car={state.car} />
-        <AddedFeatures car={state.car} removeFeature={removeFeature}/>
+        <Header car={car} />
+        <AddedFeatures car={car} removeFeature={removeFeature}/>
       </div>
       <div className="box">
-        <AdditionalFeatures additionalFeatures={state.additionalFeatures} buyItem={buyItem}/>
-        <Total car={state.car} additionalPrice={state.additionalPrice} />
+        <AdditionalFeatures additionalFeatures={additionalFeatures} buyItem={buyItem}/>
+        <Total car={car} additionalPrice={additionalPrice} />
       </div>
     </div>
   );
@@ -37,7 +37,10 @@ const App = ({ state, addIteam,  removeIteam }) => {
 
 const mapStateToProps = state => {
   return{
-    state: state
+    // state: state
+    car: state.car,
+    additionalFeatures: state.additionalFeatures,
+    additionalPrice: state.additionalPrice
   }
 }
 
