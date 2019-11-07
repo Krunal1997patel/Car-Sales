@@ -23,17 +23,30 @@ const initialState = {
 
 
 export const toggleIteam = (state = initialState , action ) => {
-    console.log('I am from redux!!')
-    
+    // console.log('I am from redux!!')
+    // console.log(action.type)
     switch(action.type){
         case ADD_ITEM:
             return{
                 ...state,
+                car: {
+                    ...state.car,
+                    features: [...state.car.features, action.payload],
+                    price: state.car.price + action.payload.price
+                },
+
+                additionalFeatures: state.additionalFeatures.filter(item => item.id !== action.payload.id)
             }
 
         case REMOVE_ITEM:
             return{
                 ...state,
+                car: {
+                    ...state.car,
+                    price: state.car.price - action.payload.price,
+                    features: state.car.features.filter(item => item.id !== action.payload.id)
+                },
+               additionalFeatures: [...state.additionalFeatures, action.payload]
             }
             
         default:
